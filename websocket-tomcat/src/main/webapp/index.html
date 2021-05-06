@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket Demo</title>
+</head>
+<body>
+    <h2>WebSocket Demo</h2>
+
+    <input id="messageBox" type="text">
+    <hr>
+    <button onclick="sendMsg()">发送</button>
+</body>
+<script>
+    if(!window.WebSocket) {
+        alert("您的浏览器不支持WebSocket。");
+    }
+    let wsClient = new WebSocket("ws://localhost:8080/ws-demo/hello");
+    // 链接创建成功
+    wsClient.onopen = function () {
+        console.log("WebSocket链接创建成功.");
+    }
+    // 链接创建失败
+    wsClient.onerror = function (event) {
+        console.log("WebSocket链接创建失败。原因：" + event);
+    }
+    // 链接关闭
+    wsClient.onclose = function () {
+        console.log("WebSocket链接关闭。")
+    }
+    // 接收消息
+    wsClient.onmessage = function (msg) {
+        console.log("客户端接收消息：" + msg);
+    }
+    // 发送消息
+    function sendMsg() {
+        let msg = document.getElementById("messageBox").value;
+        wsClient.send(msg);
+    }
+</script>
+</html>
