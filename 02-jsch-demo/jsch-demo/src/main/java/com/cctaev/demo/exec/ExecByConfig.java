@@ -17,7 +17,7 @@ import java.io.OutputStream;
 public class ExecByConfig {
     public static void main(String[] args) {
         // 创建SSH配置
-        SSHConfig config = new SSHConfig("47.92.161.168", 50100, "root", "Lrf411524.");
+        SSHConfig config = new SSHConfig("localhost", 50100, "root", "");
         // 创建SSH客户端
         JSch sshClient = new JSch();
         try {
