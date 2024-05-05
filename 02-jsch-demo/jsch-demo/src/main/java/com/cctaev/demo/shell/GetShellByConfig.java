@@ -1,4 +1,4 @@
-package com.cctaev.demo.example;
+package com.cctaev.demo.shell;
 
 import com.jcraft.jsch.*;
 import lombok.AllArgsConstructor;
@@ -40,7 +40,7 @@ public class GetShellByConfig {
         sshConfig.setUsername("root");
         sshConfig.setHost("192.168.80.51");
         sshConfig.setPort(22);
-        sshConfig.setPassword("Lrf411524.");
+        sshConfig.setPassword("");
         return sshConfig;
     }
 
